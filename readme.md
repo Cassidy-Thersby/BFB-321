@@ -124,23 +124,25 @@ erDiagram
         DATETIME created_at
     }
 
-    product_categories ||--o{ products : "categorizes"
-    vendors ||--o{ stock_updates : "performs"
-    products ||--o{ stock_updates : "tracks"
-
+   Users }o -- || Locations : "located at"
+   Users }o -- || Requests : "submits"
+   Users }o -- || Food_Items : "supplies"
+   Users }o -- || Transactions : "supplier donate"
+   Users }o -- || Transactions : "recipient request"
+   Users || -- o{ User_Roles : "uploaded by"  
+   Locations || -- o{ Food_Items : "located at"  
+   Requests }o -- || Food_Items : "requested by"  
 ```
 
-The database includes the following tables and views:
+The database includes the following tables:
 
-### Tables !!!
-1. **suppliers**: Registered food suppliers and their information
-2. **recipients**: Registered recipients in need of food and their information
-3. **food_surplus**: Available food product type, description, quantity with supplier name, location and contact information.
-4. **food_requests** 
-
-### Views !!!
-1. **low_stock_products**: View of products with low stock alerts
-2. **inventory_summary**: Summary statistics for the dashboard
+### Tables
+1. **Users**: Includes user information such as name, occupation, contact number, email and password.
+2. **User_Roles**: Contains user id and role of user, either being a supplier or recipient.
+3. **Requests**: Includes information such as the request, recipient, quantity and status of the transaction. 
+4. **Food_Items**: Available food product type, description, quantity with supplier name, location and contact information.
+5. **Transactions**: Transactional information including quantity and status of the request. 
+6. **Location**: Includes location information such as province, city, zip code and street code. 
 
 
 ## Database Demonstration
@@ -197,13 +199,6 @@ BFB Supply Chain/
 2. Open `index.html` in your web browser.
 3. Log into the website as either a supplier or recipient to access the respective dashboards.
 4. Navigate through the different pages to request or upload available surplus food.
-
-
-open index.html to acces "Conact, About, LogIn and SignUp" 
-
-After Signup and Log In as supplier or recipient you can aceess the recipient or supplier dashboard 
-
-In the Supplier dashboard youll see...
 
 
 ## Technologies Used
