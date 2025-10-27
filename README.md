@@ -43,57 +43,67 @@ FoodConnect aims to create a more connected and sustainable food supply chain. W
 
 ```mermaid
 erDiagram
-    suppliers {
-        INTEGER supplier_id PK
-        TEXT supplier_name
+   Locations {
+        INT  location_id PK
+        TEXT province
+        TEXT city
+        TEXT zip_code
+        TEXT street_adress
+    }
+
+   Users {
+        INT user_id PK
+        TEXT user_fullname 
         TEXT occupation
-        TEXT location
+        INT location_id FK
         TEXT contact_number
         TEXT email
         TEXT password
         DATETIME created_at
     }
 
-    recipients {
-        INTEGER recipient_id PK
-        TEXT recipient_name
-        TEXT location
-        TEXT contact_number
-        TEXT email
-        TEXT password
+   User_Roles {
+        INT user_id FK
+        TEXT role PK
+    }
+
+   Requests {
+        INT request_id PK
+        INT item_id FK
+        INT recipient_id FK
+        DECIMAL quantity_needed
+        TEXT status
         DATETIME created_at
     }
 
-    food_surplus {
-        INTEGER surplus_id PK
-        INTEGER supplier_id FK
-        TEXT product_type
-        TEXT description
-        INTEGER quantity
-        TEXT unit
-        DATE expiry_date
-        INTEGER min_stock_level
-        INTEGER max_stock_level
-        TEXT storage_condition
-        TEXT notes
-        DATETIME created_at
-    }
-
-  food_requests {
-        INTEGER request_id PK
-        INTEGER recipient_id FK
+   Food_Items {
+        INT item_id PK
+        INT user_id FK
         TEXT food_type
+        TEXT food_name
+        DECIMAL quantity_available
+        DATE expiry_date
+        TEXT delivery_option
+        INT location_id FK
         TEXT description
-        INTEGER quantity_needed
-        TEXT urgency
-        DATE preferred_date
-        TEXT notes
+        TEXT status
         DATETIME created_at
     }
 
-    suppliers || -- o{ food_surplus : "provides"
-    recipients || -- o{ food_requests : "submits"
-    
+   Transactions {
+        INT transaction_id PK
+        INT item_id
+        INT supplier_id FK
+        INT recipient_id FK
+        DECIMAL quantity
+        TEXT status
+        DATETIME created_at
+    }
+
+    product_categories ||--o{ products : "categorizes"
+    vendors ||--o{ stock_updates : "performs"
+    products ||--o{ stock_updates : "tracks"
+
 ```
 
 The database includes the following tables and views:
