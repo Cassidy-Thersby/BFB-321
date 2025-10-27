@@ -1,6 +1,7 @@
 # FoodConnect
 Connecting food suppliers with organizations that serve people in need.
 
+
 ## Group 7 Members
 | **Name**         | **Student Number** |
 |------------------|--------------------|
@@ -95,12 +96,6 @@ erDiagram
     
 ```
 
-## Database Demonstration
-The foodconnect.sql migration file was executed successfully in SQLite to create and populate the foodconnect.db database.
-It includes four normalized tables (suppliers, recipients, food_surplus, and food_requests) linked by foreign keys.
-Sample data was inserted into each table (5 records per table) to demonstrate supplier-to-recipient food supply chain interactions.
-The successful execution was verified using SELECT COUNT(*) queries, confirming that all tables contain sample data.
-
 The database includes the following tables and views:
 
 ### Tables !!!
@@ -112,6 +107,14 @@ The database includes the following tables and views:
 ### Views !!!
 1. **low_stock_products**: View of products with low stock alerts
 2. **inventory_summary**: Summary statistics for the dashboard
+
+
+## Database Demonstration
+The foodconnect.sql migration file was executed successfully in SQLite to create and populate the foodconnect.db database.
+It includes four normalized tables (suppliers, recipients, food_surplus, and food_requests) linked by foreign keys.
+Sample data was inserted into each table (5 records per table) to demonstrate supplier-to-recipient food supply chain interactions.
+The successful execution was verified using SELECT COUNT(*) queries, confirming that all tables contain sample data.
+
 
 ## Sample Data
 The database includes the following data types:
@@ -158,12 +161,14 @@ BFB Supply Chain/
 3. Log into the website as either a supplier or recipient to access the respective dashboards.
 4. Navigate through the different pages to request or upload available surplus food. 
 
+
 ## Technologies Used
 - **Visual Studio Code**: Visual Studios was used to create html files to generate the frontend, and to integrate the sql database. 
 - **HTML5**: Used to create the structure of the website. 
 - **Bootstrap 5.3.8**: Used to create the user interface (UI) framework and styling
 - **Bootstrap Icons**: Icon set was used in the design of our html files. 
 - **SQLite**: Used to create the data base and draw up the ERDs.
+
 
 ## Browser Compatibility
 The application works with all modern browsers that support HTML5 and CSS3, including:
