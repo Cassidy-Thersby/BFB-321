@@ -27,15 +27,39 @@ FoodConnect aims to create a more connected and sustainable food supply chain. W
 
 
 ## Database Setup
-
+Follow these steps to create and load the FoodConnect database.
 ### Using SQLite Command Line
-1. Open command prompt/terminal in the project directory
-2. Run the SQL commands:
-   ```bash
-   sqlite3 foodconnect.db < foodconnect.sql
-   (Optional: .read foodconnect.sql)
-   ```
+1. Open command prompt and navigate to the project folder.
 
+2. Delete any existing database. If a previous version exists, delete it to avoid conflicts using:
+   ```bash
+    del foodconnect.db
+   ```
+3. Create and load the database. Start SQLite using:
+   ```bash
+   sqlite3 foodconnect.db
+   ```
+   Once inside the SQLite prompt (sqlite>), load the SQL schema using:
+   ```bash
+   .read foodconnect.sql
+   ```
+   
+4. Verify the tables to confirm the tables were created using:
+   ```bash
+   .tables
+   ```
+   Expected output: food_items locations requests transactions user_roles users
+   
+5. Check the mock data. Run this command to verify that sample data was inserted successfully using:
+   ```bash
+   SELECT * FROM users
+   ```
+   You should see sample records like: Alice Smith | Bob Johnson | Carol White | David Brown
+   
+6. Exit SQLite when finished, type:
+   ```bash
+   .exit
+   ```
 
 ## Database Schema
 
@@ -152,6 +176,7 @@ BFB Supply Chain/
 |   |   └──background.png
 |   |
 |   ├── about.html                       # About us information page
+|   ├── contact.html                     # Contact information of the FoodConnect development team
 |   ├── index.html                       # Main dashboard
 |   ├── recipient-dashboard.html         # Main recipient dashboard
 |   ├── recipientlogin.html              # Recipient login page
@@ -162,14 +187,23 @@ BFB Supply Chain/
 |   ├── uploadrequest.html               # Request surplus food
 |   ├── view-available-surplus.html      # View available surplus inventory
 |   ├── view-recipient-needs.html        # View recipient food needs
-└── readme.md                            # Explanation of project purpose, database schema and ERD. 
+├── foodconnect.db
+├── foodconnect.sql
+├──readme.md                             # Explanation of project purpose, database schema and ERD.
 ```
 
 ## Usage
 1. Initialize the database using the SQLite command line method above.
 2. Open `index.html` in your web browser.
 3. Log into the website as either a supplier or recipient to access the respective dashboards.
-4. Navigate through the different pages to request or upload available surplus food. 
+4. Navigate through the different pages to request or upload available surplus food.
+
+
+open index.html to acces "Conact, About, LogIn and SignUp" 
+
+After Signup and Log In as supplier or recipient you can aceess the recipient or supplier dashboard 
+
+In the Supplier dashboard youll see...
 
 
 ## Technologies Used
